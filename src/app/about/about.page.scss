@@ -1,0 +1,129 @@
+.services-row {
+  justify-content: center;
+}
+
+.service-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+}
+
+.service-card {
+  /* Eliminar el ancho y la altura */
+  width: 100%;
+  height: 100%;
+  padding: 10px 0;
+}
+
+.service-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #3880ff; /* Color de fondo del círculo (puedes cambiarlo) */
+}
+
+.service-icon {
+  font-size: 3rem;
+  color: #ffffff; /* Color del icono (puedes cambiarlo) */
+}
+
+.service-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.service-description {
+  font-size: 1rem;
+}
+
+/* Estilos para la sección de información general */
+.general-info {
+  text-align: center;
+  background-image: url("https://peruretail.sfo3.cdn.digitaloceanspaces.com/wp-content/uploads/Precio-Uno-Fachada02-750x375.jpeg"); /* Ruta de la imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  position: relative;
+}
+
+/* Fondo semi-transparente para el contenedor de texto */
+.general-info .text-container {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  border-radius: 8px;
+}
+
+.general-info h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.address,
+.opening-hours {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 0;
+}
+
+.address ion-icon,
+.opening-hours ion-icon {
+  font-size: 1.2rem;
+  margin-right: 5px;
+  color: #3880ff; /* Color del icono */
+}
+
+.address p,
+.opening-hours p {
+  font-size: 1rem;
+  color: #ffffff; /* Color del texto */
+}
+
+/* Estilos para las secciones */
+.section {
+  margin-top: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 20px;
+  color: #333;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #3880ff; /* Color del subtítulo */
+  margin-bottom: 10px;
+}
+
+/* Estilos para la sección de contacto */
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.contact-info ion-icon {
+  font-size: 1.5rem;
+  margin-right: 10px;
+  color: #3880ff; /* Color del icono */
+}
+
+.contact-info p {
+  font-size: 1rem;
+  margin: 0;
+}

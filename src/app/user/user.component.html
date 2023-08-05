@@ -1,0 +1,101 @@
+<ion-content class="ion-padding">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button style="margin-bottom: 20px; margin-right: 15px;" (click)="openModalAdd(true)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-card>
+    <ion-card-content>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Clave</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Filas de la tabla -->
+            <tr *ngFor="let usuario of listaUsuarios">
+              <td>{{ usuario.name }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>{{ usuario.password }}</td>
+              <td>
+                <!-- Iconos de acción con márgenes y tamaño personalizado -->
+                <ion-icon name="create-outline" size="small" color="primary" style="margin-right: 8px;" (click)="editar(usuario.id)"></ion-icon>
+                <ion-icon name="trash-outline" size="small" color="danger" (click)="eliminar(usuario.id)"></ion-icon>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Nuevo Usuario</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <form [formGroup]="formulario">
+        <ion-input style="margin-bottom: 10px;"
+                   type="text"
+                   label="Nombre"
+                   label-placement="floating"
+                   fill="outline"
+                   placeholder="Ingrese su nombre"
+                   formControlName="nombre"
+                   [(ngModel)]="usuario.name"
+                  >
+        </ion-input>
+    
+        <ion-input style="margin-bottom: 10px;"
+                   type="email"
+                   label="Correo"
+                   label-placement="floating"
+                   fill="outline"
+                   placeholder="Ingrese su correo"
+                   formControlName="correo"
+                   [(ngModel)]="usuario.email"
+                   >
+        </ion-input>
+    
+        <ion-input style="margin-bottom: 10px;"
+                   type="password"
+                   label="Contraseña"
+                   label-placement="floating"
+                   fill="outline"
+                   placeholder="Ingrese su contraseña"
+                   formControlName="password"
+                   [(ngModel)]="usuario.password"
+                   >
+        </ion-input>
+    
+        <ion-input style="margin-bottom: 20px;"
+                   type="password"
+                   label="Confirmar contraseña"
+                   label-placement="floating"
+                   fill="outline"
+                   placeholder="Ingrese su contraseña"
+                   formControlName="confirmPassword"
+                   >
+        </ion-input>
+        <ion-button [disabled]="!formulario.valid" (click)="registrarUsuario()" expand="block">
+          Agregar
+        </ion-button>
+      </form>
+    </ion-content>
+    
+  </ng-template>
+</ion-modal>

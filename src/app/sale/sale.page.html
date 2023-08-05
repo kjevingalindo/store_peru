@@ -1,0 +1,120 @@
+<ion-content class="ion-padding">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button style="margin-bottom: 20px; margin-right: 15px;" (click)="openModalAdd(true)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-card>
+    <ion-card-content>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Documento</th>
+              <th>Cliente</th>
+              <th>Usuario</th>
+              <th>Producto</th>
+              <th>Fecha</th>
+              <th>Serie</th>
+              <th>Numero</th>
+              <th>Total</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Filas de la tabla -->
+            <tr *ngFor="let venta of listaVentas">
+              <td>{{ venta.document }}</td>
+              <td>{{ getNombreCliente(venta.idClient) }}</td>
+              <td>{{ getNombreUsuario(venta.idUser) }}</td>
+              <td>{{ getDescripcionProducto(venta.idProduct) }}</td>
+              <td>{{ venta.dateSale }}</td>
+              <td>{{ venta.serie }}</td>
+              <td>{{ venta.number }}</td>
+              <td>{{ venta.total }}</td>
+              <td>
+                <!-- Iconos de acción con márgenes y tamaño personalizado -->
+                <ion-icon name="create-outline" size="small" color="primary" style="margin-right: 8px;"
+                  (click)="editar(venta.id)"></ion-icon>
+                <ion-icon name="trash-outline" size="small" color="danger" (click)="eliminar(venta.id)"></ion-icon>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Nuevo Venta</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <form [formGroup]="formularioVenta">
+        <ion-input style="margin-bottom: 10px;" type="text" label="Documento" label-placement="floating" fill="outline"
+          placeholder="Ingrese el documento" formControlName="document" [(ngModel)]="venta.document">
+        </ion-input>
+
+        <ion-item style="margin-bottom: 10px;">
+          <ion-label>Cliente</ion-label>
+          <ion-select  formControlName="idClient" [(ngModel)]="venta.idClient">
+            <ion-select-option *ngFor="let cliente of listaClientes" [value]="cliente.id">
+              {{ cliente.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+        <ion-item style="margin-bottom: 10px;">
+          <ion-label>Usuario</ion-label>
+          <ion-select formControlName="idUser" [(ngModel)]="venta.idUser">
+            <ion-select-option *ngFor="let usuario of listaUsuarios" [value]="usuario.id">
+              {{ usuario.name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+        <ion-item style="margin-bottom: 10px;">
+          <ion-label>Producto</ion-label>
+          <ion-select formControlName="idProduct" [(ngModel)]="venta.idProduct">
+            <ion-select-option *ngFor="let producto of listaProductos" [value]="producto.id">
+              {{ producto.description }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-input style="margin-bottom: 10px;" type="date" label="Fecha de venta" label-placement="floating"
+          fill="outline" placeholder="Ingrese la fecha de venta" formControlName="dateSale"
+          [(ngModel)]="venta.dateSale">
+        </ion-input>
+
+        <ion-input style="margin-bottom: 10px;" type="text" label="Serie" label-placement="floating" fill="outline"
+          placeholder="Ingrese la serie" formControlName="serie" [(ngModel)]="venta.serie">
+        </ion-input>
+
+        <ion-input style="margin-bottom: 10px;" type="text" label="Número" label-placement="floating" fill="outline"
+          placeholder="Ingrese el número" formControlName="number" [(ngModel)]="venta.number">
+        </ion-input>
+
+        <ion-input style="margin-bottom: 10px;" type="number" label="Total" label-placement="floating" fill="outline"
+          placeholder="Ingrese el total" formControlName="total" [(ngModel)]="venta.total">
+        </ion-input>
+
+
+
+        <ion-button [disabled]="!formularioVenta.valid" (click)="registrarVenta()" expand="block">
+          Agregar
+        </ion-button>
+      </form>
+    </ion-content>
+
+  </ng-template>
+</ion-modal>

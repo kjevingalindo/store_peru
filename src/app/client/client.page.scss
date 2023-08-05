@@ -1,0 +1,33 @@
+/* Estilos CSS para la tabla */
+.table-container {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 20px;
+    text-align: left;
+    border-bottom: 1px solid #cccccc56;
+  }
+  
+  
+  /* Estilos adicionales para dispositivos móviles */
+  @media (max-width: 600px) {
+    .table-container {
+      overflow: auto;
+      max-height: 500px;
+    }
+    th, td {
+      font-size: 14px;
+      padding: 15px;
+    }
+  }
+
+
+
+  
+  

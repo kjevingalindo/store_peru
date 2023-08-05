@@ -1,0 +1,17 @@
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let message of listaMensajes">
+      <ion-label>
+        <div class="user-id">{{ getNombreUsuario(message.userId) }}</div>
+        <div class="message-text">{{ message.text }}</div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  
+<br>
+  <ion-item>
+    <ion-input [(ngModel)]="newMessage" placeholder="Escribe un mensaje"></ion-input>
+    <ion-button (click)="sendMessage()">Enviar</ion-button>
+  </ion-item>
+</ion-content>

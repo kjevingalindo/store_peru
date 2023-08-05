@@ -1,0 +1,74 @@
+<ion-content class="ion-padding">
+
+  <!-- Sección de información general -->
+  <div class="general-info">
+
+    <div class="text-container">
+      <h3>Minimarket</h3>
+      <div class="address">
+        <ion-icon name="location-outline"></ion-icon>
+        <p>Av Arenales #782</p>
+      </div>
+      <div class="opening-hours">
+        <ion-icon name="time-outline"></ion-icon>
+        <p>Horario de atención: 7am - 11pm</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="">
+    <h4 class="section-title">Servicios</h4>
+    <!-- ... (código de la sección de servicios) ... -->
+    <ion-row class="services-row">
+      <ion-col size="6" size-md="4" size-lg="3" class="service-column" *ngFor="let service of services">
+        <ion-card class="service-card">
+          <div class="service-circle">
+            <ion-icon [name]="service.icon" class="service-icon"></ion-icon>
+          </div>
+          <ion-card-content class="service-content">
+            <ion-card-title class="service-title">{{ service.title }}</ion-card-title>
+            <ion-card-subtitle class="service-description">{{ service.description }}</ion-card-subtitle>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+  <!-- Imágenes -->
+  <ion-img
+    src="https://mir-s3-cdn-cf.behance.net/projects/404/f2eb46125146693.Y3JvcCw0NTAwLDM1MTksMCw0OTA.png"></ion-img>
+
+  <!-- Sección de Misión -->
+  <div class="section">
+    <h4 class="section-title">Misión</h4>
+    <p class="section-content">
+      La misión de PRECIO UNO es ofrecer a nuestros clientes una amplia variedad de productos de calidad a precios
+      competitivos,
+      brindando un servicio excepcional y creando una experiencia de compra agradable para cada visitante.
+    </p>
+  </div>
+
+  <!-- Sección de Visión -->
+  <div class="section">
+    <h4 class="section-title">Visión</h4>
+    <p class="section-content">
+      Nuestra visión es convertirnos en el minimarket líder a nivel regional, reconocido por nuestra excelencia en el
+      servicio al cliente,
+      la calidad de nuestros productos y el compromiso con el bienestar de la comunidad en la que operamos.
+    </p>
+  </div>
+
+  <!-- Sección de Contacto -->
+  <div class="section">
+    <h4 class="section-title">Contacto</h4>
+    <div class="contact-info">
+      <ion-icon name="call-outline"></ion-icon>
+      <p> +51 917558844</p>
+    </div>
+    <div class="contact-info">
+      <ion-icon name="mail-outline"></ion-icon>
+      <p>tucorreo@gmail.com</p>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,78 @@
+<ion-content class="ion-padding">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button style="margin-bottom: 20px; margin-right: 15px;" (click)="openModalAdd(true)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-card>
+    <ion-card-content>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Documento</th>
+              <th>Direccion</th>
+              <th>Telefono</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Filas de la tabla -->
+            <tr *ngFor="let cliente of listaClientes">
+              <td>{{ cliente.name }}</td>
+              <td>{{ cliente.document }}</td>
+              <td>{{ cliente.address }}</td>
+              <td>{{ cliente.phone }}</td>
+              <td>
+                <!-- Iconos de acción con márgenes y tamaño personalizado -->
+                <ion-icon name="create-outline" size="small" color="primary" style="margin-right: 8px;"
+                  (click)="editar(cliente.id)"></ion-icon>
+                <ion-icon name="trash-outline" size="small" color="danger" (click)="eliminar(cliente.id)"></ion-icon>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Nuevo Cliente</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <form [formGroup]="formularioCliente">
+        <ion-input style="margin-bottom: 10px;" type="text" label="Nombre" label-placement="floating" fill="outline"
+          placeholder="Ingrese su nombre" formControlName="name" [(ngModel)]="cliente.name">
+        </ion-input>
+
+        <ion-input style="margin-bottom: 10px;" type="text" label="Documento" label-placement="floating" fill="outline"
+          placeholder="Ingrese su documento" formControlName="document" [(ngModel)]="cliente.document">
+        </ion-input>
+
+        <ion-input style="margin-bottom: 10px;" type="text" label="Dirección" label-placement="floating" fill="outline"
+          placeholder="Ingrese su dirección" formControlName="address" [(ngModel)]="cliente.address">
+        </ion-input>
+
+        <ion-input style="margin-bottom: 20px;" type="tel" label="Teléfono" label-placement="floating" fill="outline"
+          placeholder="Ingrese su teléfono" formControlName="phone" [(ngModel)]="cliente.phone">
+        </ion-input>
+
+        <ion-button [disabled]="!formularioCliente.valid" (click)="registrarCliente()" expand="block">
+          Agregar
+        </ion-button>
+      </form>
+    </ion-content>
+
+  </ng-template>
+</ion-modal>

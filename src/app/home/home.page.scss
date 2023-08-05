@@ -1,0 +1,23 @@
+ion-content {
+  ion-padding {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .welcome-message {
+      text-align: center;
+
+      h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

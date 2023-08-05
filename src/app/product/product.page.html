@@ -1,0 +1,80 @@
+<ion-content class="ion-padding">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button style="margin-bottom: 20px; margin-right: 15px;" (click)="openModalAdd(true)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-card>
+    <ion-card-content>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Descripcion</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Categoria</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Filas de la tabla -->
+            <tr *ngFor="let producto of listaProductos">
+              <td>{{ producto.description }}</td>
+              <td>{{ producto.price }}</td>
+              <td>{{ producto.stock }}</td>
+              <td>{{ producto.category }}</td>
+              <td>
+                <!-- Iconos de acción con márgenes y tamaño personalizado -->
+                <ion-icon name="create-outline" size="small" color="primary" style="margin-right: 8px;"
+                  (click)="editar(producto.id)"></ion-icon>
+                <ion-icon name="trash-outline" size="small" color="danger" (click)="eliminar(producto.id)"></ion-icon>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Nuevo Producto</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <form [formGroup]="formularioProducto">
+        <ion-input style="margin-bottom: 10px;" type="text" label="Descripción" label-placement="floating"
+          fill="outline" placeholder="Ingrese la descripción" formControlName="description"
+          [(ngModel)]="producto.description">
+        </ion-input>
+
+        <ion-input style="margin-bottom: 10px;" type="number" label="Precio" label-placement="floating" fill="outline"
+          placeholder="Ingrese el precio" formControlName="price" [(ngModel)]="producto.price">
+        </ion-input>
+
+        <ion-input style="margin-bottom: 10px;" type="number" label="Stock" label-placement="floating" fill="outline"
+          placeholder="Ingrese el stock" formControlName="stock" [(ngModel)]="producto.stock">
+        </ion-input>
+
+        <ion-input style="margin-bottom: 20px;" type="text" label="Categoría" label-placement="floating" fill="outline"
+          placeholder="Ingrese la categoría" formControlName="category" [(ngModel)]="producto.category">
+        </ion-input>
+
+
+        <ion-button [disabled]="!formularioProducto.valid" (click)="registrarProducto()" expand="block">
+          Agregar
+        </ion-button>
+      </form>
+    </ion-content>
+
+  </ng-template>
+</ion-modal>

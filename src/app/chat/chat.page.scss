@@ -1,0 +1,24 @@
+/* chat-general.page.scss */
+
+/* Estilos para la lista de mensajes */
+ion-list {
+    ion-item {
+      ion-label {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+  
+      /* Estilos para el userID */
+      .user-id {
+        font-weight: bold;
+        color: #3880ff; 
+      }
+  
+      /* Estilos para el mensaje */
+      .message-text {
+        margin-top: 5px;
+      }
+    }
+  }
+  
